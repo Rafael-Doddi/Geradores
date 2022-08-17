@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Gerador de senha
+{% endblock %}
+{% block extrahead %}
+<!-- ICON -->
+<!-- <link rel="shortcut icon" href="../static/troll.png" type="image/x-icon"> -->
+<!-- CSS -->
+<link rel="stylesheet" href="../static/css/style.css" />
+<link rel="stylesheet" href="../static/css/daynight.css" />
+<link rel="stylesheet" href="../static/css/hamburguer.css" />
+<!-- JS -->
+<script src="../static/js/copiar.js" defer></script>
+<script src="../static/js/script.js" defer></script>
+<script src="../static/js/daynight.js" defer></script>
+<script src="../static/js/hamburguer.js" defer></script>
+<script src="../static/js/mostra_senha.js" defer></script>
+{% endblock %}
+{% block main %}
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Gerador</a>
+        <button class="navbar-toggler second-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gerar_usuario">Gerar usuário</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Gerar senha <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/gerar_cpf">Gerar CPF</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="tema">
+
+    <!-- Included from https://codepen.io/steve_walson/pen/oNprgre -->
+    <div class="container">
+        <div class="daynight">
+
+            <label for="checkbox">
+                <input type="checkbox" name="" id="checkbox">
+                <div class="toggle">
+                    <div class="cloud"></div>
+                    <div class="star"></div>
+                    <div class="sea"></div>
+                    <div class="mountains"></div>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <h2 class="mb-3">Gerador de senha</h2>
+
+    <div class="cont">
+        <div>
+            <div class="input-group mb-3">
+
+                <div id="copiado" class="alert-success" style="opacity: 0;">
+                    Senha copiada!
+                </div>
+
+                <div class="input-group-append">
+                    <button class="btn-gerar" type="button" onclick="gerar()"><img src="../static/img/gerar.png"
+                            alt="gerar"></button>
+                </div>
+
+                <input type="text" readonly id="input-gerado" class="flex-grow-1 tema">
+                
+                <div id="senha_visivel" class="senha">
+                    <button class="btn-mostrar show" type="button"><img src="../static/img/visible4.svg" alt="visivel"></button>
+                    <button class="btn-mostrar escondido" type="button"><img src="../static/img/hidden5.svg" alt="invisivel"></button>
+                </div>
+
+                <div class="input-group-append">
+                    <button class="btn-copiar" type="button" onclick="copiar('Senha Copiada!')"><img
+                            src="../static/img/copy.png" alt="copiar"></button>
+                </div>
+            </div>
+
+            <div id="div-numero">
+                <label class="m-0">Número de Caracteres:</label>
+                <input class="tema" type="number" name="numero-caracteres" id="numero-caracteres" value="20">
+            </div>
+            <input class="tema" type="range" min="14" max="70" id="range-caracteres" value="20">
+        </div>
+
+        <div id="opcoes tema">
+            <div class="opcoes-content">
+                <!-- Included from https://codepen.io/himalayasingh/pen/dBJBMO -->
+                <input type="checkbox" id="minusculo" class="_checkbox" value="0" checked>
+                <label for="minusculo" class="label_checkbox">
+                    <div class="tick_mark"></div>
+                </label>
+                <label>Letra minúscula</label>
+            </div>
+            <div class="opcoes-content">
+                <input type="checkbox" id="maiusculo" class="_checkbox" value="1" checked>
+                <label for="maiusculo" class="label_checkbox">
+                    <div class="tick_mark"></div>
+                </label>
+                <label>Letra maiúscula</label>
+            </div>
+            <div class="opcoes-content">
+                <input type="checkbox" id="numeros" class="_checkbox" value="2" checked>
+                <label for="numeros" class="label_checkbox">
+                    <div class="tick_mark"></div>
+                </label>
+                <label>Números</label>
+            </div>
+            <div class="opcoes-content">
+                <input type="checkbox" id="simbolos" class="_checkbox" value="3" checked>
+                <label for="simbolos" class="label_checkbox">
+                    <div class="tick_mark"></div>
+                </label>
+                <label>Símbolos</label>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+{% endblock %}
